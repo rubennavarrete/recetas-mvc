@@ -33,7 +33,7 @@ export const getRecetaById = async (req, res) => {
 export const createReceta = async (req, res) => {
     try {
 
-        const { str_nombre, str_image, str_preparacion, str_dificultad} = req.body;
+        const { str_nombre, str_image, str_preparacion, str_dificultad, usuarioId} = req.body;
 
         const receta = await Receta.create({
             str_nombre,
@@ -64,7 +64,7 @@ export const deleteReceta = async (req, res) => {
             }
         })
         console.log("La receta", deleteRowReceta, "se elimino con exito");
-        return res.sendStatus(204)
+        return res.sendStatus(204) //significa ok
 
     } catch (err) {
         return res.status(500).json({ message: err.message })
