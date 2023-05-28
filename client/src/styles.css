@@ -21,3 +21,11 @@
   backdrop-filter: blur(10px);
   border-radius: 23px;
 }
+
+.centrado {
+  height: 95vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
