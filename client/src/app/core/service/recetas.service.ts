@@ -9,6 +9,8 @@ export class RecetasService {
 
   private URL_datosRecetas: string = config.URL_API_BASE + 'receta'
 
+  almacenadorD!:any[]
+
   constructor(private http:HttpClient) 
   { 
     
