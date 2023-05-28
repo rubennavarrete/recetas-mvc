@@ -9,7 +9,7 @@ const routes: Routes = [
     path:'',
     children: [
       {
-        path: 'recetas', 
+        path: 'receta', 
         loadChildren: () =>
         import ('./recetas/recetas.module').then(
           (m) => m.RecetasModule
@@ -22,7 +22,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    // RecetasComponent
+    
     AdminComponent
   ],
   imports: [
@@ -31,7 +31,8 @@ const routes: Routes = [
     
   ], 
   exports: [
-    RouterModule
+    RouterModule,
+    AdminComponent
   ]
 })
 export class AdminModule { }

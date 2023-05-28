@@ -18,8 +18,8 @@ const baseUrl = '';
 export const environment = {
   production: false,
   baseUrl: baseUrl,
-  url: 'https://localhost:4200/' + baseUrl,
-  urlLogOut: 'https://localhost:4200/' + baseUrl,
+  url: 'http://localhost:4200/' + baseUrl,
+  urlLogOut: 'http://localhost:4200/' + baseUrl,
   // urlOneDriveService:
   //   'https://pruebas.espoch.edu.ec:8181/WebCorreoInstitucional/ServiciosCorreos/TokenOneDrive',
 //  urlApi: 'https://192.168.1.111:8000/',            //Wifi de Ruben
@@ -29,7 +29,7 @@ export const environment = {
   // urlApi: 'https://26.157.36.117:8000/',              //Servidor VyV readmi
   // urlApi: 'https://192.168.1.107:8001/',           //Wifi Ruben
    //urlApi: 'https://localhost:8001/',               //Local de Daniel
-  urlApi: 'https://localhost:4400/',               //Local de Homero
+  urlApi: 'http://localhost:4400/',               //Local de Homero
   // urlApi: 'https://localhost:8001/',               //Local de Daniel
   // urlApi: 'https://localhost:8000/',               //Local de Homero
   // CodigoSistemaOneDrive: 'ARCHPOLI',
