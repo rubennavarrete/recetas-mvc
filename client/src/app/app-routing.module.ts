@@ -5,19 +5,14 @@ import { AppComponent } from "./app.component";
 import { HomeModule } from "./pages/home/home.module";
 import { RecetasModule } from "./pages/admin/recetas/recetas.module";
 import { AdminModule } from "./pages/admin/admin.module";
-import { Layouts } from "./layout/layout";
 
 const routes: Routes = [{
-    path: config.URL_BASE_PATH,
-    data: {layout: Layouts.simple},
+    path: config.URL_API_BASE,
+    data: AppComponent,
     children: [
-        {path:'', loadChildren: ()=> HomeModule},
-        // {path:'home', loadChildren: ()=> AdminModule},
-        {path:'recetas', loadChildren:()=> RecetasModule}
-    ],
-},
-    
-]
+        {path:'', loadChildren: ()=> AdminModule},
+    ]
+}]
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
