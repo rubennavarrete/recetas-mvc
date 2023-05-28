@@ -11,7 +11,13 @@ import { AcercaComponent } from './components/acerca/acerca.component';
 import { SesionComponent } from './components/sesion/sesion.component';
 
 @NgModule({
-  declarations: [AppComponent, RecetasComponent, InicioComponent, AcercaComponent, SesionComponent],
+  declarations: [
+    AppComponent,
+    RecetasComponent,
+    InicioComponent,
+    AcercaComponent,
+    SesionComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
