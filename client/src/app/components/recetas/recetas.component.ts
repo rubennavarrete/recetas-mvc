@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+import { RecetasService } from 'src/app/core/service/recetas.service';
 
 @Component({
   selector: 'app-recetas',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecetasComponent implements OnInit {
 
-  constructor() { }
+  private elDestructor$ = new Subject<any>()
 
-  ngOnInit(): void {
+  constructor(private srvRecetas: RecetasService) 
+  { 
+
+  }
+
+  ngOnInit(): void 
+  {
+
+  }
+  
+  getReceta ()
+  {
+    this.srvRecetas.getRecetas().
+    pipe(takeUntil(this.elDestructor$)).
+    subscribe({
+      next: (data) =>
+      {
+          console.log("Llegaron los datos",data);
+      },
+      error: (errorsito) =>
+      {
+          console.log(errorsito);
+      }
+    })
+    
   }
 
 }
