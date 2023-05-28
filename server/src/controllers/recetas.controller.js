@@ -31,21 +31,15 @@ export const getRecetaById = async (req, res) => {
 
 export const createReceta = async (req, res) => {
   try {
-    const {
-      str_nombre,
-      str_image,
-      str_preparacion,
-      str_dificultad,
-      usuarioId,
-    } = req.body;
+    // const {
+    //   str_nombre,
+    //   str_image,
+    //   str_preparacion,
+    //   str_dificultad,
+    //   usuarioId,
+    // } = req.body;
 
-    const receta = await Receta.create({
-      str_nombre,
-      str_image,
-      str_preparacion,
-      str_dificultad,
-      usuarioId,
-    });
+        const { str_nombre, str_image, str_preparacion, str_dificultad, usuarioId} = req.body;
 
     res.json({
       message: "Receta creada correctamente",
@@ -59,17 +53,18 @@ export const createReceta = async (req, res) => {
 export const deleteReceta = async (req, res) => {
   const { id } = req.params;
 
-  try {
-    const deleteRowReceta = await Receta.destroy({
-      where: {
-        id,
-      },
-    });
-    console.log("La receta", deleteRowReceta, "se elimino con exito");
-    return res.sendStatus(204);
-  } catch (err) {
-    return res.status(500).json({ message: err.message });
-  }
+    try {
+        const deleteRowReceta = await Receta.destroy({
+            where: {
+                id,
+            }
+        })
+        console.log("La receta", deleteRowReceta, "se elimino con exito");
+        return res.sendStatus(204) //significa ok
+
+    } catch (err) {
+        return res.status(500).json({ message: err.message })
+    }
 };
 
 export const updateReceta = async (req, res) => {
