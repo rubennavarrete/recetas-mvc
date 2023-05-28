@@ -1,17 +1,37 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
 
-import { AdminRoutingModule } from './admin-routing.module';
-import { RecetasComponent } from './recetas/recetas.component';
+import { AdminComponent } from './admin.component';
+
+const routes: Routes = [
+  {
+    path:'',
+    children: [
+      {
+        path: 'recetas', 
+        loadChildren: () =>
+        import ('./recetas/recetas.module').then(
+          (m) => m.RecetasModule
+        )
+      }
+    ]
+  }
+]
 
 
 @NgModule({
   declarations: [
-    RecetasComponent
+    // RecetasComponent
+    AdminComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    RouterModule.forChild(routes),
+    
+  ], 
+  exports: [
+    RouterModule
   ]
 })
 export class AdminModule { }
