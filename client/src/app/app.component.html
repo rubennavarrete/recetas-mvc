@@ -1,1 +1,7 @@
-<app-admin></app-admin>
+<!-- <app-admin></app-admin> -->
+<!-- <h1>hola mundo</h1> -->
+<ng-container [ngSwitch]="layout">
+  <app-simple-layout *ngSwitchCase="Layouts.simple"></app-simple-layout>
+  <!-- <app-full-layout *ngSwitchCase="Layouts.full"></app-full-layout> -->
+  <!-- <app-simple-layout *ngSwitchDefault></app-simple-layout> -->
+</ng-container>
