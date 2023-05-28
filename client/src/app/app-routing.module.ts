@@ -1,22 +1,37 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import config from "config/config";
-import { AppComponent } from "./app.component";
-import { HomeModule } from "./pages/home/home.module";
-import { RecetasModule } from "./pages/admin/recetas/recetas.module";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [{
-    path: config.URL_API_BASE,
-    data: AppComponent,
-    children: [
-        {path:'', loadChildren: ()=> HomeModule},
-        {path:'recetas', loadChildren:()=> RecetasModule}
-    ]
-}]
+import { RecetasComponent } from './components/recetas/recetas.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { AcercaComponent } from './components/acerca/acerca.component';
+import { SesionComponent } from './components/sesion/sesion.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: InicioComponent,
+  },
+  {
+    path: 'recetas',
+    component: RecetasComponent,
+  },
+  {
+    path: 'acerca-de',
+    component: AcercaComponent,
+  },
+  {
+    path: 'sesion',
+    component: SesionComponent,
+  },
+  // {
+  //   path: '',
+  //   redirectTo: '/photos',
+  //   pathMatch: 'full'
+  // }
+];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-
 export class AppRoutingModule {}
