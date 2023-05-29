@@ -1,12 +1,30 @@
 import { Usuario } from "../models/Usuario.js";
 import { Receta } from "../models/Recetas.js";
+import { sequelize } from "../database/database.js";
 
 export const getUsuarios = async (req, res) => {
+
+  const { usuario, contrasenia } = req.query;
+  console.log(req.query);
   try {
-    const usuarios = await Usuario.findAll();
-    res.json({
-      usuarios,
+    const validar = await sequelize.query(
+      `SELECT * FROM alimentos.usuario  WHERE str_nombre = '${usuario}' AND str_password = '${contrasenia}'`
+    );
+   if(validar[0].length === 1){
+    return res.json({
+      status: true,
+      message: "Credenciales correctas",
+      body: validar[0],
     });
+   }
+
+   return res.json({
+    status: false,
+    message: "Credenciales incorrectas",
+  });
+   
+    
+   
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
