@@ -51,14 +51,20 @@
                             <button type="button" 
                                 style="background-color: #E7B3A4; color: #000000;width: 30px; border-radius: 5px; height: 25px;"
                                 onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
-                                onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';">
+                                onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';"
+                               
+                            >
                                 <i class="material-icons">remove_red_eye</i>
                             </button>
             
                             <button type="button" 
+                            (click)="modificarReceta(datoRec.id_receta)"
                                 style="background-color: #E7B3A4; color: #000000;width: 30px; border-radius: 5px; height: 25px; "
                                 onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
-                                onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';">
+                                onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';"
+                               
+                            >
+                                
                                 <i class="material-icons">create</i>
                             </button>
 
@@ -66,6 +72,7 @@
                                 style="background-color: #E7B3A4; color: #000000; width: 30px;border-radius: 5px; height: 25px;"
                                 onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
                                 onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';">
+                                
                                 <i class="material-icons">delete</i>
                             </button>
                         </div>  
