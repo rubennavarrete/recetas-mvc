@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RecetasComponent } from './components/recetas/recetas.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { AcercaComponent } from './components/acerca/acerca.component';
@@ -18,7 +20,13 @@ import { SesionComponent } from './components/sesion/sesion.component';
     AcercaComponent,
     SesionComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
