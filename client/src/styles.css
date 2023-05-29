@@ -20,6 +20,7 @@
   padding: 2rem 3rem;
   backdrop-filter: blur(10px);
   border-radius: 23px;
+  background: rgb(255 168 168 / 50%);
 }
 
 .centrado {
