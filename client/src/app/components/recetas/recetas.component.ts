@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { RecetasService } from 'src/app/core/service/recetas.service';
-
+import { ModalComponent } from '../modal/modal.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-recetas',
   templateUrl: './recetas.component.html',
@@ -11,7 +12,7 @@ export class RecetasComponent implements OnInit {
 
   private elDestructor$ = new Subject<any>()
 
-  constructor(public srvRecetas: RecetasService)    //redirecciono al servicio
+  constructor(public srvRecetas: RecetasService, private router:Router)    //redirecciono al servicio
   { 
 
   }
@@ -37,8 +38,15 @@ export class RecetasComponent implements OnInit {
       {
           console.log(errorsito);
       }
-    })
-    
+    });
   }
+
+  
+    //Función ppara obtener el Id de una receta
+    modificarReceta(idReceta: number){
+      console.log("Id de la receta a modificar: ", idReceta)
+      //this.router.navigate(['/modal'])
+      //const modal = this.ModalComponent.open();
+    }
 
 }

@@ -1,8 +1,8 @@
 import Sequelize from "sequelize";
 
 // conexion a la base de datos
-<<<<<<< HEAD
-export const sequelize = new Sequelize("recetasdb", "postgres", "Holamundo14", {
+
+export const sequelize = new Sequelize("recetasdb", "postgres", "backend", {
   host: "localhost",
   dialect: "postgres",
 
