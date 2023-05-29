@@ -5,7 +5,7 @@ import { Receta } from "./Recetas.js";
 export const Usuario = sequelize.define(
   "usuario",
   {
-    id: {
+    id_usuario: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
@@ -33,8 +33,9 @@ export const Usuario = sequelize.define(
   },
   {
     timestamps: false,
+    schema: "alimentos",
   }
 );
 
-Usuario.hasMany(Receta, { foreignKey: "usuarioId", sourceKey: "id" });
-Receta.belongsTo(Usuario, { foreignKey: "usuarioId", sourceKey: "id" });
+/*Usuario.hasMany(Receta, { foreignKey: "usuarioId", sourceKey: "id" });
+Receta.belongsTo(Usuario, { foreignKey: "usuarioId", sourceKey: "id" });*/
