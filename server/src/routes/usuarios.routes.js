@@ -13,7 +13,7 @@ const router = Router();
 router.use('/info', (req, res, next) => {
   res.json({
     status: 200,
-    message: 'OK HOLA RUBÉN XD',
+    message: 'OK',
     version: '1.0.0'
   })
 });

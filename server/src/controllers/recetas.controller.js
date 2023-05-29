@@ -1,9 +1,16 @@
 import { Receta } from "../models/Recetas.js";
 
 export const getRecetas = async (req, res) => {
+  console.log('ingreso a getREcetas');
   try {
     const recetas = await Receta.findAll();
-    res.json({ recetas });
+    res.json({
+      status: true,
+      message: "Receta creada correctamente",
+      body: recetas
+    });
+
+    console.log(recetas);
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
@@ -30,6 +37,7 @@ export const getRecetaById = async (req, res) => {
 };
 
 export const createReceta = async (req, res) => {
+
   try {
     // const {
     //   str_nombre,
@@ -48,8 +56,8 @@ export const createReceta = async (req, res) => {
       usuarioId
     })
     res.json({
-      message: "Receta creada correctamente",
-      receta,
+      status: true,
+      message: "Receta creada correctamente"
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
