@@ -3,21 +3,21 @@ import { Injectable } from '@angular/core';
 import config from 'config/config';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RecetasService {
+  private URL_datosRecetas: string = config.URL_API_BASE + 'receta';
 
-  private URL_datosRecetas: string = config.URL_API_BASE + 'receta'
+  almacenadorD!: any[];
 
-  almacenadorD!:any[]
-
-  constructor(private http:HttpClient) 
-  { 
-    
+  constructor(private http: HttpClient) {}
+  getRecetas() {
+    return this.http.get<any>(this.URL_datosRecetas, { withCredentials: true });
   }
-  getRecetas()
-  {
-    return this.http.get<any>(this.URL_datosRecetas, {withCredentials:true})
+
+  putRecetas(id: number, data: any) {
+    return this.http.put<any>(this.URL_datosRecetas + '/' + id, data, {
+      withCredentials: true,
+    });
   }
 }
-

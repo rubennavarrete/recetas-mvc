@@ -18,9 +18,13 @@
 
 .text-s {
   padding: 2rem 3rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-radius: 23px;
   background: rgb(255 168 168 / 50%);
+  height: 75vh;
+  display: flex;
+  align-items: center;
 }
 
 .centrado {
