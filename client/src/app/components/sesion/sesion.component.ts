@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { Route } from '@angular/router';
 import { SesionService } from 'src/app/core/service/sesion.service';
 
 @Component({
@@ -31,12 +32,13 @@ export class SesionComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (data: any) => {
           console.log(data.status);
-          this.srvSesion.sesion = data.status;
+          this.srvSesion.setSesion(data.status);
           this.claveInc = data.status;
           this.message = data.message;
 
-          if (this.srvSesion.sesion == true) {
+          if (data.status == true) {
             window.location.href = '/recetas';
+            console.log('Iniciando sesion', data.status);
           }
         },
       });
