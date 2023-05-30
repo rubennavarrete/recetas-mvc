@@ -44,9 +44,20 @@ export class RecetasComponent implements OnInit {
   
     //Función ppara obtener el Id de una receta
     modificarReceta(idReceta: number){
-      console.log("Id de la receta a modificar: ", idReceta)
-      //this.router.navigate(['/modal'])
+      /*console.log("Id de la receta a modificar: ", idReceta)
+      this.router.navigate(['/modal'])*/
       //const modal = this.ModalComponent.open();
     }
+
+    mostrarModal = false;
+
+    abrirModal() {
+      this.mostrarModal = true;
+    }
+  
+    cerrarModal() {
+      this.mostrarModal = false;
+    }
+
 
 }

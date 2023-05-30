@@ -40,10 +40,7 @@ CREATE TABLE IF NOT EXISTS alimentos.usuario(
 
 INSERT INTO  alimentos.usuario(
 	str_nombre,
-    str_apellido,
-    str_email,
     str_password,
-    str_telefono
 )
 VALUES
-('Daniel', 'Tene', 'tenedaniel22@gmail.com', '6842','0968857043');
+('admin', 'admin23');

@@ -6,7 +6,7 @@ export const getRecetas = async (req, res) => {
     const recetas = await Receta.findAll();
     res.json({
       status: true,
-      message: "Receta creada correctamente",
+      message: "Recetas obtenidas correctamente",
       body: recetas
     });
 
