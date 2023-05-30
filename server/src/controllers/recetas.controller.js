@@ -1,13 +1,13 @@
 import { Receta } from "../models/Recetas.js";
 
 export const getRecetas = async (req, res) => {
-  console.log('ingreso a getREcetas');
+  console.log("ingreso a getREcetas");
   try {
     const recetas = await Receta.findAll();
     res.json({
       status: true,
       message: "Receta creada correctamente",
-      body: recetas
+      body: recetas,
     });
 
     console.log(recetas);
@@ -37,7 +37,6 @@ export const getRecetaById = async (req, res) => {
 };
 
 export const createReceta = async (req, res) => {
-
   try {
     // const {
     //   str_nombre,
@@ -47,17 +46,23 @@ export const createReceta = async (req, res) => {
     //   usuarioId,
     // } = req.body;
 
-    const { str_nombre, str_image, str_preparacion, str_dificultad, usuarioId } = req.body;
+    const {
+      str_nombre,
+      str_image,
+      str_preparacion,
+      str_dificultad,
+      usuarioId,
+    } = req.body;
     const receta = await Receta.create({
       str_nombre,
       str_image,
       str_preparacion,
       str_dificultad,
-      usuarioId
-    })
+      usuarioId,
+    });
     res.json({
       status: true,
-      message: "Receta creada correctamente"
+      message: "Receta creada correctamente",
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
@@ -71,22 +76,23 @@ export const deleteReceta = async (req, res) => {
     const deleteRowReceta = await Receta.destroy({
       where: {
         id,
-      }
-    })
+      },
+    });
     console.log("La receta", deleteRowReceta, "se elimino con exito");
-    return res.sendStatus(204) //significa ok
-
+    return res.sendStatus(204); //significa ok
   } catch (err) {
-    return res.status(500).json({ message: err.message })
+    return res.status(500).json({ message: err.message });
   }
 };
 
 export const updateReceta = async (req, res) => {
-  const { id } = req.params;
+  const { id_receta } = req.params;
+  console.log("id", id_receta);
+  console.log(req.body);
   try {
     const updateRecets = await Receta.findOne({
       where: {
-        id,
+        id_receta,
       },
     });
 
