@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { RecetasService } from 'src/app/core/service/recetas.service';
-import { ModalComponent } from '../modal/modal.component';
+
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-recetas',
