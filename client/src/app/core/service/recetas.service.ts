@@ -8,6 +8,7 @@ import config from 'config/config';
 export class RecetasService {
   private URL_datosRecetas: string = config.URL_API_BASE + 'receta';
 
+
   almacenadorD!: any[];
 
   constructor(private http: HttpClient) {}
@@ -19,5 +20,22 @@ export class RecetasService {
     return this.http.put<any>(this.URL_datosRecetas + '/' + id, data, {
       withCredentials: true,
     });
+  }
+
+  getRecetaId(id: number) {
+    return this.http.get<any>(`${this.URL_datosRecetas}/${id}`, {
+      withCredentials: true,
+    })
+  }
+
+  deleteRecetas(id: number) {
+    console.log(id);
+    /*return this.http.delete<any>(
+      `${this.URL_datosRecetas}/${id}`,
+      { 
+        withCredentials: true 
+      }
+    );*/
+
   }
 }

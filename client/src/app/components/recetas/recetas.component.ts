@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { RecetasService } from 'src/app/core/service/recetas.service';
 import { SesionService } from 'src/app/core/service/sesion.service';
-import { ModalComponent } from '../modal/modal.component';
+
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-recetas',
   templateUrl: './recetas.component.html',
@@ -20,10 +22,12 @@ export class RecetasComponent implements OnInit {
   idReceta!: number;
 
   private elDestructor$ = new Subject<any>();
+  private destroy$ = new Subject<any>();
 
   myForm!: FormGroup;
 
   dataReceta!: any;
+
 
   constructor(
     public fb: FormBuilder,
@@ -44,6 +48,7 @@ export class RecetasComponent implements OnInit {
 
   ngOnInit(): void {
     //al iniciar ejecuto el get
+    this.idReceta = 0;
     this.getReceta();
 
     this.srvSesion.selectSesion$.pipe(takeUntil(this.elDestructor$)).subscribe({
@@ -85,8 +90,11 @@ export class RecetasComponent implements OnInit {
   }
 
   editarModal(id: number) {
+    console.log('Presionaste el boton editar id->', id);
     this.idReceta = id;
     this.dataReceta = this.srvRecetas.almacenadorD[id - 1];
+    //this.dataReceta.value = 
+    console.log('dataReceta: ', this.dataReceta);
     this.myForm = this.fb.group({
       str_receta_nombre: [
         this.dataReceta.str_receta_nombre,
@@ -121,7 +129,7 @@ export class RecetasComponent implements OnInit {
   }
 
   //Función ppara obtener el Id de una receta
-  actulizarReceta() {
+  actualizarReceta() {
     console.log('receta modificada: ', this.myForm.value);
     this.srvRecetas.putRecetas(this.idReceta, this.myForm.value).subscribe({
       next: (data: any) => {
@@ -130,6 +138,78 @@ export class RecetasComponent implements OnInit {
         this.myForm.reset();
       },
     });
+  }
+
+  getRecetaId(id: number) {
+    console.log('id de la receta: ', id);
+    this.srvRecetas.getRecetaId(id)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe({
+      next: (data: any) => {
+        this.dataReceta = data.body;
+        
+        this.showModal = !this.showModal;
+        this.myForm = this.fb.group({
+          str_receta_nombre: [
+            data.body.str_receta_nombre,
+            [Validators.required],
+          ],
+          str_autor_nombre: [
+             data.body.str_autor_nombre,
+            [Validators.required],
+          ],
+          str_autor_telefono: [
+            data.body.str_autor_telefono,
+            [Validators.required],
+          ],
+          str_autor_correo: [
+            data.body.str_autor_correo,
+            [Validators.required],
+          ],
+          str_receta_dificultad: [
+            data.body.str_receta_dificultad,
+            [Validators.required],
+          ],
+          str_receta_image: [
+            data.body.str_receta_image,
+            [Validators.required],
+          ],
+          str_receta_preparacion: [
+            data.body.str_receta_preparacion,
+            [Validators.required],
+          ],
+        });
+
+        console.log('Receta obtenida', data.body);
+      }, 
+      error: (error: any) => {
+        console.log('Error al obtener la receta', error);
+      }
+    });
+  }
+
+  eliminarReceta(idReceta: number) {
+    console.log('id de la receta a eliminar: ', idReceta);
+    alert('¿Estás seguro de eliminar la receta?');
+    /*Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'No podrás revertir esta acción',
+      showDenyButton: true,
+      confirmButtonText: `Eliminar`,
+      denyButtonText: `Cancelar`,
+    }).then((result) => {
+      if(result.isConfirmed){
+       this.srvRecetas.deleteRecetas(idReceta)
+       .pipe(takeUntil(this.destroy$))
+       .subscribe({
+          next: (data: any) => {
+            console.log('Receta eliminada', data);
+            this.getReceta();
+          }
+        });
+      }
+    });*/
+
   }
 
   verReceta(id: number) {

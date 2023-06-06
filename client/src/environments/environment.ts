@@ -29,8 +29,9 @@ export const environment = {
   // urlApi: 'https://26.157.36.117:8000/',              //Servidor VyV readmi
   // urlApi: 'https://192.168.1.107:8001/',           //Wifi Ruben
   //urlApi: 'https://localhost:8001/',               //Local de Daniel
-  urlApi: 'http://localhost:4400/', //Local de Homero
+  //urlApi: 'http://localhost:4400/', //Local de Homero
   // urlApi: 'https://localhost:8001/',               //Local de Daniel
+    urlApi: 'http://localhost:4400/'
   // urlApi: 'https://localhost:8000/',               //Local de Homero
   // CodigoSistemaOneDrive: 'ARCHPOLI',
 };
