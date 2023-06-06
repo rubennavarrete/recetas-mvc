@@ -71,9 +71,9 @@
               </button>
 
               <button
-                *ngIf="mostarAciones"
+               
                 type="button"
-                (click)="editarModal(datoRec.id_receta)"
+                (click)="getRecetaId(datoRec.id_receta)"
                 style="
                   background-color: #e7b3a4;
                   color: #000000;
@@ -99,6 +99,7 @@
                 "
                 onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
                 onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';"
+                (click)="eliminarReceta(datoRec.id_receta)"
               >
                 <i class="material-icons">delete</i>
               </button>
@@ -276,7 +277,7 @@
         </button>
 
         <button
-          (click)="actulizarReceta()"
+          (click)="actualizarReceta()"
           class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         >
           Actualizar Receta
