@@ -1,122 +1,163 @@
- <ul role="list" class="divide-y divide-gray-100">
-    <li class="flex justify-between gap-x-6 py-5">
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        <p class="text-sm leading-6 text-gray-900">Nombre receta</p>
-                    </th>
-                    <th>
-                        <p class="text-sm leading-6 text-gray-900">Dificultad</p>
-                    </th>
-                    <th>
-                        <p class="text-sm leading-6 text-gray-900">Autor</p>
-                    </th>
-                    <th>
-                        <p class="text-sm leading-6 text-gray-900">Telefono</p>
-                    </th>
-                    <th>
-                        <p class="text-sm leading-6 text-gray-900">Correo</p>
-                    </th>
-                    <th>
-                        <p class="text-sm leading-6 text-gray-900">Imagenes</p>
-                    </th>
-                    <th>
-                        <p class="text-sm leading-6 text-gray-900">Acciones</p>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let datoRec of srvRecetas.almacenadorD" >
-                    <td style="border-color: #E7B3A4;">
-                        {{datoRec.str_receta_nombre}}
-                    </td>
-                    <td>
-                        {{datoRec.str_receta_dificultad}}
-                    </td>
-                    <td>
-                       {{datoRec.str_autor_nombre}}
-                    </td>
-                    <td>
-                        {{datoRec.str_autor_telefono}}
-                    </td>
-                    <td>
-                        {{datoRec.str_autor_correo}}
-                    </td>
-                    <td>
-                        {{datoRec.str_receta_image}}
-                    </td>
-                    <td>
-                        <div class="but" >
-                            <button type="button" 
-                                style="background-color: #E7B3A4; color: #000000;width: 30px; border-radius: 5px; height: 25px;"
-                                onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
-                                onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';">
-                                <i class="material-icons">remove_red_eye</i>
-                            </button>
-            
-                            <button type="button" 
-                                style="background-color: #E7B3A4; color: #000000;width: 30px; border-radius: 5px; height: 25px; "
-                                onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
-                                onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';">
-                                <i class="material-icons">create</i>
-                            </button>
+<ul role="list" class="divide-y divide-gray-100">
+  <li class="flex justify-between gap-x-6 py-5">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <p class="text-sm leading-6 text-gray-900">Nombre receta</p>
+          </th>
+          <th>
+            <p class="text-sm leading-6 text-gray-900">Dificultad</p>
+          </th>
+          <th>
+            <p class="text-sm leading-6 text-gray-900">Autor</p>
+          </th>
+          <th>
+            <p class="text-sm leading-6 text-gray-900">Telefono</p>
+          </th>
+          <th>
+            <p class="text-sm leading-6 text-gray-900">Correo</p>
+          </th>
+          <th>
+            <p class="text-sm leading-6 text-gray-900">Imagenes</p>
+          </th>
+          <th>
+            <p class="text-sm leading-6 text-gray-900">Acciones</p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let datoRec of srvRecetas.almacenadorD">
+          <td style="border-color: #e7b3a4">
+            {{ datoRec.str_receta_nombre }}
+          </td>
+          <td>
+            {{ datoRec.str_receta_dificultad }}
+          </td>
+          <td>
+            {{ datoRec.str_autor_nombre }}
+          </td>
+          <td>
+            {{ datoRec.str_autor_telefono }}
+          </td>
+          <td>
+            {{ datoRec.str_autor_correo }}
+          </td>
+          <td>
+            {{ datoRec.str_receta_image }}
+          </td>
+          <td>
+            <div class="but">
+              <button
+                type="button"
+                style="
+                  background-color: #e7b3a4;
+                  color: #000000;
+                  width: 30px;
+                  border-radius: 5px;
+                  height: 25px;
+                "
+                onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
+                onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';"
+              >
+                <i class="material-icons">remove_red_eye</i>
+              </button>
 
-                            <button type="button" 
-                                style="background-color: #E7B3A4; color: #000000; width: 30px;border-radius: 5px; height: 25px;"
-                                onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
-                                onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';">
-                                <i class="material-icons">delete</i>
-                            </button>
-                        </div>  
-                    </td>
-                </tr>
+              <button
+                *ngIf="mostarAciones"
+                type="button"
+                (click)="toggleModal()"
+                style="
+                  background-color: #e7b3a4;
+                  color: #000000;
+                  width: 30px;
+                  border-radius: 5px;
+                  height: 25px;
+                "
+                onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
+                onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';"
+              >
+                <i class="material-icons">create</i>
+              </button>
 
-            </tbody>
-        </table>
-         <!-- Columna 1 de Nombre receta-->
-      <!-- <div class="hidden sm:flex sm:flex-col sm:items-end">
-        <p class="text-sm leading-6 text-gray-900">Columna de nombre receta</p>
-        <p class="mt-1 text-xs leading-5 text-gray-500">Pie de limon </p>
-      </div>
- 
-        Columna 2 de dificultad
-        <div class="hidden sm:flex sm:flex-col sm:items-end">
-            <p class="text-sm leading-6 text-gray-900">Columna de dificultad</p>
-            <p class="mt-1 text-xs leading-5 text-gray-500">2</p>
-        </div>
-
-        Columna 3 de autor
-      <div class="hidden sm:flex sm:flex-col sm:items-end">
-        <p class="text-sm leading-6 text-gray-900">Columna de autor</p>
-        <p class="mt-1 text-xs leading-5 text-gray-500">Pepito Perez</p>
-      </div>
-
-        Columna 4 de telefono
-      <div class="hidden sm:flex sm:flex-col sm:items-end">
-        <p class="text-sm leading-6 text-gray-900">Columna de telefono</p>
-        <p class="mt-1 text-xs leading-5 text-gray-500">0964069144</p>
-      </div>
-        
-      Columna 5 de correo
-      <div class="hidden sm:flex sm:flex-col sm:items-end">
-        <p class="text-sm leading-6 text-gray-900">Columna de correo</p>
-        <p class="mt-1 text-xs leading-5 text-gray-500">pepito.perez@espoch.edu.ec</p>
-      </div>
-
-      Columna 6 para imagenes
-      <div class="hidden sm:flex sm:flex-col sm:items-end">
-        <p class="text-sm leading-6 text-gray-900">Columna de imagenes</p>
-        <img class="h-12 w-12 flex-none rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-      </div>
-
-      Columna 7 de acciones
-      <div class="hidden sm:flex sm:flex-col sm:items-end">
-        <p class="text-sm leading-6 text-gray-900">Columna de acciones</p>
-        <p class="mt-1 text-xs leading-5 text-gray-500">Aqui van las acciones</p>
-      </div>
-    </li>
-  </ul>
--->
-    </li>
+              <button
+                *ngIf="mostarAciones"
+                type="button"
+                style="
+                  background-color: #e7b3a4;
+                  color: #000000;
+                  width: 30px;
+                  border-radius: 5px;
+                  height: 25px;
+                "
+                onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
+                onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';"
+              >
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
 </ul>
+
+<div
+  *ngIf="showModal"
+  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+>
+  <div class="relative w-auto my-6 mx-auto max-w-6xl">
+    <!--content-->
+    <div
+      class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+    >
+      <!--header-->
+      <div
+        class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t"
+      >
+        <h3 class="text-3xl font-semibold">Modal Title</h3>
+        <button
+          class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+          (click)="toggleModal()"
+        >
+          <span
+            class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <!--body-->
+      <div class="relative p-6 flex-auto">
+        <p class="my-4 text-slate-500 text-lg leading-relaxed">
+          I always felt like I could do anything. That’s the main thing people
+          are controlled by! Thoughts- their perception of themselves! They're
+          slowed down by their perception of themselves. If you're taught you
+          can’t do anything, you won’t do anything. I was taught I could do
+          everything.
+        </p>
+      </div>
+      <!--footer-->
+      <div
+        class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b"
+      >
+        <button
+          class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          (click)="toggleModal()"
+        >
+          Close
+        </button>
+        <button
+          class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+          type="button"
+          (click)="toggleModal()"
+        >
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>

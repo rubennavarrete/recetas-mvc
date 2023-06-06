@@ -23,8 +23,6 @@ export const getUsuarios = async (req, res) => {
     message: "Credenciales incorrectas",
   });
    
-    
-   
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -67,7 +65,34 @@ export const getUsuarioRecetas = async (req, res) => {
 };
 
 export const createUsuario = async (req, res) => {
+
+  
+  //const { usuario, password } = req.body;
+  const  usuario = req.body.data.usuario;
+  const  password = req.body.data.password;
+  console.log(usuario, password);
+  
   try {
+    const validar = await sequelize.query(
+      `SELECT * FROM alimentos.usuario  WHERE str_nombre = '${usuario}' AND str_password = '${password}'`
+    );
+   if(validar[0].length === 1){
+    return res.json({
+      status: true,
+      message: "Credenciales correctas",
+      body: validar[0],
+    });
+   }
+
+   return res.json({
+    status: false,
+    message: "Credenciales incorrectas",
+  });
+   
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+  /*try {
     const { str_nombre, str_apellido, str_email, str_password, str_telefono } =
       req.body;
 
@@ -86,7 +111,7 @@ export const createUsuario = async (req, res) => {
   } catch (error) {
     console.log("no se creo el usuario por: ", error.message);
     return res.status(500).json({ message: error.message });
-  }
+  }*/
 };
 
 export const updateUsuario = async (req, res) => {
