@@ -36,7 +36,7 @@ export const getRecetaById = async (req, res) => {
     res.json({
       status: true,
       message: "Receta encontrada",
-      receta,
+      body: receta,
     });
   } catch (err) {
     return res.status(500).json({ message: err.message });
