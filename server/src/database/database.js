@@ -7,3 +7,5 @@ export const sequelize = new Sequelize("recetasdb", "postgres", "3919", {
   dialect: "postgres",
   port: "5454"
 });
+
+
