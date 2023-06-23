@@ -84,7 +84,7 @@ export const deleteReceta = async (req, res) => {
   try {
     const deleteRowReceta = await Receta.destroy({
       where: {
-        id,
+        id_receta: id,
       },
     });
     console.log("La receta", deleteRowReceta, "se elimino con exito");

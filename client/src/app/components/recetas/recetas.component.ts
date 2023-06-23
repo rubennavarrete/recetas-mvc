@@ -204,8 +204,8 @@ export class RecetasComponent implements OnInit {
 
   eliminarReceta(idReceta: number) {
     console.log('id de la receta a eliminar: ', idReceta);
-    alert('¿Estás seguro de eliminar la receta?');
-    /*Swal.fire({
+    //alert('¿Estás seguro de eliminar la receta?');
+    Swal.fire({
       title: '¿Estás seguro?',
       text: 'No podrás revertir esta acción',
       showDenyButton: true,
@@ -222,7 +222,7 @@ export class RecetasComponent implements OnInit {
           }
         });
       }
-    });*/
+    });
 
   }
 

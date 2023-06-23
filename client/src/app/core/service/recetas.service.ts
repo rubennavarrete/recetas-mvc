@@ -47,12 +47,12 @@ export class RecetasService {
 
   deleteRecetas(id: number) {
     console.log(id);
-    /*return this.http.delete<any>(
+    return this.http.delete<any>(
       `${this.URL_datosRecetas}/${id}`,
       { 
         withCredentials: true 
       }
-    );*/
+    );
 
   }
 }
