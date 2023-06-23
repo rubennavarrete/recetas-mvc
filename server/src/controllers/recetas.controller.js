@@ -92,7 +92,7 @@ export const updateReceta = async (req, res) => {
   try {
     const updateRecets = await Receta.findOne({
       where: {
-        id_receta,
+        id_receta: id_receta,
       },
     });
 
