@@ -71,9 +71,9 @@
               </button>
 
               <button
-                *ngIf="mostarAciones"
+              *ngIf="mostarAciones"
                 type="button"
-                (click)="editarModal(datoRec.id_receta)"
+                (click)="getRecetaId(datoRec.id_receta)"
                 style="
                   background-color: #e7b3a4;
                   color: #000000;
@@ -99,6 +99,7 @@
                 "
                 onmouseover="this.style.backgroundColor='#CF3A58'; this.style.color='#FFFFFF';"
                 onmouseout="this.style.backgroundColor='#E7B3A4'; this.style.color='#000000';"
+                (click)="eliminarReceta(datoRec.id_receta)"
               >
                 <i class="material-icons">delete</i>
               </button>
@@ -111,7 +112,7 @@
 </ul>
 
 <div
-  *ngIf="showModal"
+  *ngIf="showModal" 
   class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
 >
   <div class="relative w-auto my-6 mx-auto max-w-6xl">
@@ -240,8 +241,8 @@
                 rows="3"
                 class="block p-2.5 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Escriba aquí su preparación..."
-                value="{{ dataReceta.str_receta_image }}"
-                formControlName="str_receta_image"
+                value="{{ dataReceta.str_receta_preparacion }}"
+                formControlName="str_receta_preparacion"
               ></textarea>
             </div>
             <div>
@@ -260,6 +261,40 @@
                 formControlName="str_receta_dificultad"
               />
             </div>
+
+             <div>
+              <label
+                for="email"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Correo</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="john.doe@company.com"
+                required
+                value="{{ dataReceta.str_autor_correo }}"
+                formControlName="str_autor_correo"
+              />
+            </div>
+
+            <!-- <div>
+              <label
+                for="idreceta"
+                class="block mb-2 text-sm font-medium text-gray-900"
+                >Id Receta</label
+              >
+              <input
+                type="email"
+                id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="john.doe@company.com"
+                required
+                value="{{ dataReceta.id_receta}}"
+                formControlName="id_receta"
+              />
+            </div> -->
           </div>
         </form>
       </div>
@@ -276,7 +311,7 @@
         </button>
 
         <button
-          (click)="actulizarReceta()"
+          (click)="actualizarReceta(dataReceta.id_receta)"
           class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         >
           Actualizar Receta

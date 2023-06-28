@@ -3,6 +3,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { Router, RoutesRecognized } from '@angular/router';
 import { SesionService } from './core/service/sesion.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

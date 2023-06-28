@@ -4,9 +4,6 @@ import { sequelize } from "../database/database.js";
 export const Receta = sequelize.define(
   "receta",
   {
-    
-	
-
     id_receta: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -15,13 +12,13 @@ export const Receta = sequelize.define(
     str_receta_nombre: {
       type: DataTypes.STRING(100),
     },
-    str_autor_nombre:{
+    str_autor_nombre: {
       type: DataTypes.STRING,
     },
-	  str_autor_telefono: {
+    str_autor_telefono: {
       type: DataTypes.STRING,
     },
-	  str_autor_correo: {
+    str_autor_correo: {
       type: DataTypes.STRING,
     },
     str_receta_image: {
@@ -36,6 +33,6 @@ export const Receta = sequelize.define(
   },
   {
     timestamps: false,
-    schema: "alimentos",
+    // schema: "alimentos",
   }
 );
