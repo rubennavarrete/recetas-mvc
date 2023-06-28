@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "build": "babel src --out-dir dist"
+    "build": "babel src -d lib"
   },
   "author": "Ruben Valencia",
   "license": "MIT",
@@ -23,8 +23,11 @@
     "sweetalert2": "^11.7.11"
   },
   "devDependencies": {
+    "@babel/cli": "^7.22.5",
     "@babel/core": "^7.22.5",
     "@babel/node": "^7.22.5",
+    "@babel/preset-env": "^7.18.10",
+    "babel-preset-env": "^1.7.0",
     "nodemon": "^2.0.22"
   }
 }
