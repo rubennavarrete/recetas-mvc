@@ -12,6 +12,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { AcercaComponent } from './components/acerca/acerca.component';
 import { SesionComponent } from './components/sesion/sesion.component';
 import { ModificarRecetaComponent } from './components/modificar-receta/modificar-receta.component';
+import { NuevaRecetaComponent } from './components/nueva-receta/nueva-receta.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ModificarRecetaComponent } from './components/modificar-receta/modifica
     InicioComponent,
     AcercaComponent,
     SesionComponent,
-    ModificarRecetaComponent
+    ModificarRecetaComponent,
+    NuevaRecetaComponent
   ],
   imports: [
     BrowserModule,

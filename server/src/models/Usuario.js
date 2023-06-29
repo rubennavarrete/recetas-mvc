@@ -33,7 +33,7 @@ export const Usuario = sequelize.define(
   },
   {
     timestamps: false,
-    schema: "alimentos",
+    // schema: "alimentos",
   }
 );
 

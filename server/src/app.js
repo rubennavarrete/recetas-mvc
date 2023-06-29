@@ -11,7 +11,7 @@ app.use(express.json());
 const whiteList = [
   "http://localhost:4200",
   "https://localhost:4200",
-  "https://inventario-espoch.rubenvn.com",
+  "https://recetas.rubenvn.com",
 ];
 app.use(
   cors({

@@ -3,26 +3,24 @@ import { Receta } from "../models/Recetas.js";
 import { sequelize } from "../database/database.js";
 
 export const getUsuarios = async (req, res) => {
-
   const { usuario, contrasenia } = req.query;
   console.log(req.query);
   try {
     const validar = await sequelize.query(
       `SELECT * FROM alimentos.usuario  WHERE str_nombre = '${usuario}' AND str_password = '${contrasenia}'`
     );
-   if(validar[0].length === 1){
-    return res.json({
-      status: true,
-      message: "Credenciales correctas",
-      body: validar[0],
-    });
-   }
+    if (validar[0].length === 1) {
+      return res.json({
+        status: true,
+        message: "Credenciales correctas",
+        body: validar[0],
+      });
+    }
 
-   return res.json({
-    status: false,
-    message: "Credenciales incorrectas",
-  });
-   
+    return res.json({
+      status: false,
+      message: "Credenciales incorrectas",
+    });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -65,30 +63,27 @@ export const getUsuarioRecetas = async (req, res) => {
 };
 
 export const createUsuario = async (req, res) => {
-
-  
   //const { usuario, password } = req.body;
-  const  usuario = req.body.data.usuario;
-  const  password = req.body.data.password;
+  const usuario = req.body.data.usuario;
+  const password = req.body.data.password;
   console.log(usuario, password);
-  
+
   try {
     const validar = await sequelize.query(
-      `SELECT * FROM alimentos.usuario  WHERE str_nombre = '${usuario}' AND str_password = '${password}'`
+      `SELECT * FROM usuario  WHERE str_nombre = '${usuario}' AND str_password = '${password}'`
     );
-   if(validar[0].length === 1){
-    return res.json({
-      status: true,
-      message: "Credenciales correctas",
-      body: validar[0],
-    });
-   }
+    if (validar[0].length === 1) {
+      return res.json({
+        status: true,
+        message: "Credenciales correctas",
+        body: validar[0],
+      });
+    }
 
-   return res.json({
-    status: false,
-    message: "Credenciales incorrectas",
-  });
-   
+    return res.json({
+      status: false,
+      message: "Credenciales incorrectas",
+    });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
