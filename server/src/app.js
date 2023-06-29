@@ -8,7 +8,11 @@ const app = express();
 // mideleware
 app.use(express.json());
 
-const whiteList = ["http://localhost:4200", "https://localhost:4200"];
+const whiteList = [
+  "http://localhost:4200",
+  "https://localhost:4200",
+  "https://recetas.rubenvn.com",
+];
 app.use(
   cors({
     credentials: true,
