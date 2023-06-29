@@ -18,7 +18,9 @@ const baseUrl = '';
 export const environment = {
   production: false,
   baseUrl: baseUrl,
-  url: 'https://recetas.rubenvn.com' + baseUrl,
+  url: 'http://localhost:4200/' + baseUrl,
   urlLogOut: 'http://localhost:4200/' + baseUrl,
-  urlApi: 'https://api-recetas.rubenvn.com/', //server Railway
+  // urlApi:
+  // 'https://api-recetas.rubenvn.com/', //server Railway
+  urlApi: 'http://localhost:4400/',
 };
