@@ -17,6 +17,12 @@ export class RecetasService {
     return this.http.get<any>(this.URL_datosRecetas, { withCredentials: true });
   }
 
+  postRecetas(file: any){
+    return this.http.post<any>(this.URL_datosRecetas + file, {
+      withCredentials: true,
+    })
+  }
+
   putRecetas(id: number, data: any) {
     console.log('lo que llega ->', data);
     return this.http.put<any>(this.URL_datosRecetas + '/' + id, data, {
