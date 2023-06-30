@@ -4,9 +4,6 @@ import { sequelize } from "../database/database.js";
 export const Receta = sequelize.define(
   "receta",
   {
-    
-	
-
     id_receta: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -36,6 +33,7 @@ export const Receta = sequelize.define(
   },
   {
     timestamps: false,
+    logging: false,
     schema: "alimentos",
   }
 );
