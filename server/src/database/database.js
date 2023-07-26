@@ -5,9 +5,9 @@ import Sequelize from "sequelize";
 export const sequelize = new Sequelize(
   "recetasdb",
    "postgres", 
-   "pr@ct1c@5", 
+   "backend", 
    {
-    host: "143.110.144.231",
+    host: "localhost",
     logging: false,
     dialect: "postgres",
   } 

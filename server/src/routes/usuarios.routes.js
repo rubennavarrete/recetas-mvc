@@ -6,6 +6,7 @@ import {
   createUsuario,
   updateUsuario,
   deleteUsuario,
+  validarLogin
 } from "../controllers/usuarios.controller.js";
 
 const router = Router();
@@ -18,7 +19,9 @@ router.use('/info', (req, res, next) => {
   })
 });
 
-// /api/usuarios/
+//router.use(verificarToken);
+router.post("/login", validarLogin);
+
 router.get("/usuario", getUsuarios);
 router.post("/usuario", createUsuario);
 router.get("/usuario/:id", getUsuarioById);

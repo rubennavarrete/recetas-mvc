@@ -1,6 +1,44 @@
 import { Usuario } from "../models/Usuario.js";
 import { Receta } from "../models/Recetas.js";
 import { sequelize } from "../database/database.js";
+import jwt from "jsonwebtoken";
+import { jwtVariables } from "../config/variables.config.js"
+
+
+export const validarLogin = async (req, res) => {
+  console.log("validaLogin");
+  console.log(req.body);
+
+  const tokenUsuario = {
+    user: req.body.user,
+    password: req.body.password
+
+  };
+
+  const token = jwt.sign(tokenUsuario, jwtVariables.jwtSecret, {
+    expiresIn: "1d",
+  });
+
+  console.log("token generado",token);
+
+  const token2 = jwt.verify(token, jwtVariables.jwtSecret);
+  console.log("token con los datos",token2);
+
+
+  /*res.cookie("token", token, {
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // que sea misma hora que el token
+    httpOnly: false,
+    sameSite: "none",
+    secure: true,
+    damin:"localhost"
+  });*/
+
+  res.json({
+    status: true,
+    message: "Credenciales correctas",
+    token: token,
+  })
+};
 
 export const getUsuarios = async (req, res) => {
 

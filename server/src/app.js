@@ -2,6 +2,9 @@ import express from "express";
 import usuarioRautes from "./routes/usuarios.routes.js";
 import recetaRoutes from "./routes/recetas.routes.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
+
+
 
 const app = express();
 
@@ -20,7 +23,7 @@ app.use(
   })
 );
 // routes
-
+app.use(cookieParser());
 app.use(usuarioRautes);
 app.use(recetaRoutes);
 
