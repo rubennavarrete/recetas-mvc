@@ -7,8 +7,9 @@ export const getUsuarios = async (req, res) => {
   console.log(req.query);
   try {
     const validar = await sequelize.query(
-      `SELECT * FROM alimentos.usuario  WHERE str_nombre = '${usuario}' AND str_password = '${contrasenia}'`
+      `SELECT * FROM usuario  WHERE str_nombre = '${usuario}' AND str_password = '${contrasenia}'`
     );
+    console.log('validar => ', validar);
     if (validar[0].length === 1) {
       return res.json({
         status: true,
