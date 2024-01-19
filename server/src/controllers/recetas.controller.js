@@ -1,4 +1,3 @@
-import { where } from "sequelize";
 import { Receta } from "../models/Recetas.js";
 
 export const getRecetas = async (req, res) => {
@@ -18,17 +17,16 @@ export const getRecetas = async (req, res) => {
 };
 
 export const getRecetaById = async (req, res) => {
- 
   try {
     const { id } = req.params;
-    console.log('Id a editar',id)
+    console.log("Id a editar", id);
     const receta = await Receta.findOne({
       where: {
         id_receta: id,
       },
     });
 
-    console.log("receta id", receta)
+    console.log("receta id", receta);
 
     if (!receta)
       return res.status(400).json({ message: "Receta no encontrada" });
@@ -107,25 +105,26 @@ export const updateReceta = async (req, res) => {
     str_autor_correo,
     str_receta_image,
     str_receta_preparacion,
-    str_receta_dificultad
-  } = req.body
+    str_receta_dificultad,
+  } = req.body;
 
   console.log(req.body);
 
   try {
-    const receta = await Receta.update({
-      str_receta_nombre,
-      str_autor_nombre,
-      str_autor_telefono,
-      str_autor_correo,
-      str_receta_image,
-      str_receta_preparacion,
-      str_receta_dificultad
-    },
-    {
-      where: { id_receta: id}
-    });
-
+    const receta = await Receta.update(
+      {
+        str_receta_nombre,
+        str_autor_nombre,
+        str_autor_telefono,
+        str_autor_correo,
+        str_receta_image,
+        str_receta_preparacion,
+        str_receta_dificultad,
+      },
+      {
+        where: { id_receta: id },
+      }
+    );
 
     /*const updateRecets = await Receta.findOne({
       where: {
@@ -137,12 +136,12 @@ export const updateReceta = async (req, res) => {
     await updateRecets.save();*/
 
     //return res.json(updateRecets);
-    console.log("Receta actualizada", receta)
+    console.log("Receta actualizada", receta);
     res.json({
       status: true,
       message: "Receta actualizada correctamente",
       //body: receta,
-    })
+    });
   } catch (err) {
     console.log("error", err);
     return res.status(500).json({ message: err.message });

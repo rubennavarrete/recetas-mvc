@@ -5,10 +5,10 @@ import Sequelize from "sequelize";
 export const sequelize = new Sequelize(
   "railway",
   "postgres",
-  "XTmJSgysEpXkeT3JVv2A",
+  "9iZy90V7vB0PLQfrGXnO",
   {
-    host: "containers-us-west-118.railway.app",
+    host: "containers-us-west-91.railway.app",
     dialect: "postgres",
-    port: 6052,
+    port: 7261,
   }
 );
